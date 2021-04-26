@@ -2565,8 +2565,12 @@ static int cpufreq_set_policy(struct cpufreq_policy *policy,
 	memcpy(&new_data.cpuinfo, &policy->cpuinfo, sizeof(policy->cpuinfo));
 	new_data.freq_table = policy->freq_table;
 	new_data.cpu = policy->cpu;
-	/*
-	 * PM QoS framework collects all the requests from users and provide us
+
+	 if (new_policy->min > new_policy->max)
+		new_policy->min = new_policy->max;
+		
+	*/
+         * PM QoS framework collects all the requests from users and provide us
 	 * the final aggregated value here.
 	 */
 	new_data.min = freq_qos_read_value(&policy->constraints, FREQ_QOS_MIN);
