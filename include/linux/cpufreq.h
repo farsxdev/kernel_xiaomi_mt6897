@@ -232,6 +232,9 @@ int cpufreq_get_policy(struct cpufreq_policy *policy, unsigned int cpu);
 void refresh_frequency_limits(struct cpufreq_policy *policy);
 void cpufreq_update_policy(unsigned int cpu);
 void cpufreq_update_limits(unsigned int cpu);
+#ifdef CONFIG_MTK_CPU_FREQ_STANDARDIZE
+void cpufreq_set_policy_ppm(unsigned int cpu, int min, int max);
+#endif
 bool have_governor_per_policy(void);
 bool cpufreq_supports_freq_invariance(void);
 struct kobject *get_governor_parent_kobj(struct cpufreq_policy *policy);
