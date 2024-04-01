@@ -3,7 +3,7 @@
 ccflags-y += -I$(srctree)/drivers/remoteproc
 
 obj-$(CONFIG_MTK_CCU_RPROC)		+= mtk_ccu.o
-obj-$(CONFIG_MTK_CCU_RPROC)		+= mtk_ccu_mssv.o
+obj-$(CONFIG_MTK_CCU_RPROC_MSSV)	+= mtk_ccu_mssv.o
 ccflags-y += -I$(srctree)/mtk-modules/drivers/misc/mediatek/mtk-interconnect/ \
 			 -I$(srctree)/mtk-modules/drivers/misc/mediatek/include \
 			 -I$(srctree)/mtk-modules/drivers/misc/mediatek/iommu \
