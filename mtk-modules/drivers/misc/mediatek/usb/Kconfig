@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0
+
+source "mtk-modules/drivers/misc/mediatek/usb/usb_meta/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/usb/usb_rndis/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/usb/usb_boost/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/usb/usb_offload/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/usb/usb_xhci/Kconfig"

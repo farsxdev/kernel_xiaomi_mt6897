@@ -1,0 +1,112 @@
+# SPDX-License-Identifier: GPL-2.0
+
+source "mtk-modules/drivers/memory/Kconfig"
+
+source "mtk-modules/drivers/iio/adc/Kconfig"
+
+source "mtk-modules/drivers/mfd/Kconfig"
+
+source "mtk-modules/drivers/nvmem/Kconfig"
+
+source "mtk-modules/drivers/dma/mediatek/Kconfig"
+
+source "mtk-modules/drivers/ufs/Kconfig"
+
+source "mtk-modules/drivers/char/Kconfig"
+
+source "mtk-modules/drivers/clk/mediatek/Kconfig"
+
+source "mtk-modules/drivers/clocksource/Kconfig"
+
+source "mtk-modules/drivers/cpufreq/Kconfig"
+
+source "mtk-modules/drivers/soc/mediatek/Kconfig"
+
+source "mtk-modules/drivers/watchdog/Kconfig"
+
+source "mtk-modules/drivers/dma-buf/heaps/Kconfig"
+
+source "mtk-modules/drivers/regulator/Kconfig"
+
+source "mtk-modules/drivers/leds/Kconfig"
+
+source "mtk-modules/drivers/pinctrl/mediatek/Kconfig"
+
+source "mtk-modules/drivers/power/supply/Kconfig"
+
+source "mtk-modules/drivers/rtc/Kconfig"
+
+source "mtk-modules/drivers/remoteproc/Kconfig"
+
+source "mtk-modules/drivers/rpmsg/Kconfig"
+
+source "mtk-modules/drivers/input/keyboard/Kconfig"
+
+source "mtk-modules/drivers/phy/mediatek/Kconfig"
+
+source "mtk-modules/drivers/thermal/mediatek/Kconfig"
+
+source "mtk-modules/drivers/spmi/Kconfig"
+
+source "mtk-modules/drivers/tty/serial/8250/Kconfig"
+
+source "mtk-modules/drivers/reset/Kconfig"
+
+source "mtk-modules/drivers/mailbox/Kconfig"
+
+source "mtk-modules/drivers/interconnect/Kconfig"
+
+source "mtk-modules/drivers/i2c/busses/Kconfig"
+
+source "mtk-modules/drivers/pwm/Kconfig"
+
+source "mtk-modules/drivers/spi/Kconfig"
+
+source "mtk-modules/drivers/iommu/Kconfig"
+
+source "mtk-modules/drivers/tee/Kconfig"
+
+source "mtk-modules/drivers/mmc/host/Kconfig"
+
+source "mtk-modules/drivers/gpu/drm/mediatek/Kconfig"
+
+source "mtk-modules/drivers/input/touchscreen/Kconfig"
+
+source "mtk-modules/drivers/input/fingerprint/Kconfig"
+
+source "mtk-modules/drivers/gpu/drm/panel/Kconfig"
+
+source "mtk-modules/drivers/gpu/mediatek/Kconfig"
+
+source "mtk-modules/drivers/media/platform/Kconfig"
+
+source "mtk-modules/drivers/usb/Kconfig"
+
+source "mtk-modules/drivers/devfreq/Kconfig"
+
+source "mtk-modules/drivers/misc/mediatek/Kconfig"
+
+source "mtk-modules/drivers/misc/xiaomi/Kconfig"
+
+source "mtk-modules/sound/soc/codecs/Kconfig"
+
+source "mtk-modules/sound/soc/mediatek/Kconfig"
+
+source "mtk-modules/drivers/pci/controller/Kconfig"
+
+source "mtk-modules/drivers/pinctrl/Kconfig"
+
+source "mtk-modules/drivers/media/platform/mtk-isp/Kconfig"
+
+source "mtk-modules/fs/f2fs/Kconfig"
+
+source "mtk-modules/drivers/input/misc/Kconfig"
+
+source "mtk-modules/drivers/staging/process_exit/Kconfig"
+
+config FACTORY_BUILD
+	bool "distiguish factory version from dev version"
+	default n
+	help
+	  This macro will be defined when build factory version. It is used to
+	  distinguish factory and dev codes in kernel.

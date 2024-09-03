@@ -1,0 +1,3 @@
+# SPDX-License-Identifier: GPL-2.0
+
+source "mtk-modules/drivers/usb/mtu3/Kconfig"

@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+config DEVICE_MODULES_MTK_SMI
+	tristate "MediaTek SoC Memory Controller driver" if COMPILE_TEST
+	depends on ARCH_MEDIATEK || COMPILE_TEST
+	help
+	  This driver is for the Memory Controller module in MediaTek SoCs,
+	  mainly help enable/disable iommu and control the power domain and
+	  clocks for each local arbiter.
+
+source "mtk-modules/drivers/memory/mediatek/Kconfig"

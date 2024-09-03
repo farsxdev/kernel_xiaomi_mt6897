@@ -1,0 +1,249 @@
+# SPDX-License-Identifier: GPL-2.0
+
+menu "Storage"
+source "mtk-modules/drivers/misc/mediatek/pidmap/Kconfig"
+endmenu # Storage
+
+menu "Power, PMIC, Battery & Low Power"
+source "mtk-modules/drivers/misc/mediatek/clkbuf/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/slbc/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/cm_mgr/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mcupm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/dvfsrc/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/dcm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/qos/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/srclken_rc/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/lpm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/ssc/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/swpm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/pmsr/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/power_throttling/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/pmic_protect/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/cpufreq_v1/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/cpufreq_lite/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/eemgpu/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/leakage_table/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mdpm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/pbm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/cg_ppt/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/ips/Kconfig"
+
+config MTK_WWAN_PWRCTL_SUPPORT
+	bool "Thin modem Power Control driver"
+	help
+	  Used for control the power of Thin modem.
+	  Inluce power on/off, warm/cold reset, and soft on.
+	  Provides the commands with ioctl for user space.
+	  If unsure, say N
+endmenu # Power
+
+menu "SSPM"
+source "mtk-modules/drivers/misc/mediatek/sspm/Kconfig"
+endmenu # SSPM
+
+menu "MultiMedia, Display, Camera"
+source "mtk-modules/drivers/misc/mediatek/iommu/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/cameraisp/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/cmdq/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mtk-interconnect/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mdp/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mmp/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/lens/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/flashlight/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/flashlight/v4l2/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/imgsensor/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/jpeg/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/cam_cal/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/cam_timesync/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/camera_mem/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/vow/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/ccu/src/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/vmm_spm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/vmm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/vdec_fmt/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mminfra/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mmdebug/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/widevine_drm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/hw_sem/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/cam_log/Kconfig"
+endmenu # MultiMedia, Display, Camera
+
+menu "Security"
+source "mtk-modules/drivers/misc/mediatek/trusted_mem/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/geniezone/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/trusty/Kconfig"
+source "mtk-modules/drivers/virt/geniezone/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mkp/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/masp/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/ise_lpm/Kconfig"
+endmenu # Security
+
+menu "Tinysys"
+source "mtk-modules/drivers/misc/mediatek/apusys/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/sspm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/tinysys_scmi/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/scp/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/vcp/Kconfig"
+endmenu # Tinysys
+
+menu "Debug, log, trace"
+
+config MTK_MTE_DEBUG
+	bool "Test MTE temp patch"
+	depends on ARM64_MTE
+	help
+	  To prevent gki breaking, we introduce MTK MTE DEBUG config
+	  for those MTE temporary patch only in eng/userdebug build.
+	  Say Y in eng/userdebug build.
+	  If unsure, say N.
+
+config MTK_KASAN_DEBUG
+	bool "Test Kasan temp patch"
+	depends on KASAN
+	help
+	  To prevent gki breaking, we introduce MTK KASAN DEBUG config
+	  for those Kasan temporary patch only in eng/userdebug build.
+	  Say Y in eng/userdebug build.
+	  If unsure, say N.
+
+config MTK_KASAN_MEMBLOCK_SKIP
+	bool "mtk kasan memblock skip"
+	depends on KASAN
+	help
+	  This option allows memblock.o to skip kasan/khwasan
+	  sanitize checks. Kasan shadow memory initialization
+	  uses memblock to allocate page and checks every page.
+	  Users select this option to speed up kasan shadow
+	  initialization when system boots.
+
+config MTK_ATF_LOGGER
+	tristate "atf logger kernel driver"
+	depends on HAVE_ARM_SMCCC && ARCH_MEDIATEK && OF
+	help
+	  ARM Trusted Firmwear Logger which is designed by Mediatek.
+	  The logger provide a /proc interface for reading from
+	  user space. We can obtain live TF-A log through
+	  atf logger driver
+
+config MTK_MET
+	tristate "MET FEATURE ENABLE"
+	help
+	  This selects the MET profile function for MET device.
+	  If you want MET feature, say m here.
+	  This is needed if support for MET devices is required.
+	  If unsure, say N.
+
+config MTK_MET_DEBUG
+	bool "MET DEBUG"
+	depends on MTK_MET
+	help
+	  To prevent abi violation, we introduce MET DEBUG config
+	  for those MET features enabled only in eng/userdebug build.
+	  Say Y in eng/userdebug build.
+	  If unsure, say N.
+
+config MTK_RTNL_LOCK_DEBUG
+	bool "rtnl_lock debugging, deadlock detection"
+	depends on STACKTRACE_SUPPORT
+	select STACKTRACE
+	help
+	  If you say Y here then the kernel will detect whether any function
+	  hold rtnl_lock too long and some key information will be printed
+	  out to help locate the problem.
+	  If unsure, say N.
+
+config MTK_VM_DEBUG
+	bool "MTK_VM"
+	def_bool n
+	help
+	  This is used for debugging kernel memory management related
+	  seldom issues.
+	  Say Y here if you need debug kernel memory management.
+	  If unsure, say N
+
+source "mtk-modules/drivers/misc/mediatek/blocktag/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mtprof/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/locking/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mmstat/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/aee/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/sda/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/subpmic/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/monitor_hang/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/memblock/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/log_store/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mtprintk/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/selinux_warning/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/et/Kconfig"
+endmenu # Debug
+
+menu "Modem & Connectivity"
+source "mtk-modules/drivers/misc/mediatek/ccci_util/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/ccmni/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/eccci/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/btif/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/connectivity/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/conn_md/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/uarthub/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/conn_scp/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/nfc/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/memory-amms/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mddp/Kconfig"
+endmenu # Modem
+
+menu "Other Peripherals"
+source "mtk-modules/drivers/misc/mediatek/typec/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/extcon/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/adsp/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/audio_ipi/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/irtx/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/pwm/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/sensor/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/gate_ic/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/usb/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/mbraink/Kconfig"
+endmenu # Other Peripheral
+
+menu "Performance"
+source "mtk-modules/drivers/misc/mediatek/sched/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/cache-auditor/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/performance/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/perf_common/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/rps/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/task_turbo/Kconfig"
+source "mtk-modules/drivers/misc/mediatek/pgboost/Kconfig"
+endmenu # Performance
+
+
+
+menu "Config File"
+config BUILD_CONFIG_FILE
+	string "build config file"
+	help
+	  Specify the build.config file which record toolchain environment
+	  Such as "build.config.mtk.aarch64"
+
+config ABI_MONITOR
+	bool "abi monitor support"
+	help
+	  Used to enable abi monitor check for KMI,
+	  which is the interface between kernel modules and kernel(vmlinux).
+	  Say Y here if you are need abi monitor support.
+	  If unsure, say N
+
+config EXT_MODULES
+	string "out-of-tree kernel modules"
+	help
+	  Specify out-of-tree kernel modules to build in order
+	  The value must be kernel module repo list, such as
+	  "vendor/mediatek/kernel_modules/connectivity/common vendor/mediatek/kernel_modules/connectivity/gps"
+endmenu # Config
+
+menu "Misc configs"
+config FPGA_EARLY_PORTING
+	bool "MTK FPGA EARLY PORTING"
+	help
+	  Used for FPGA early porting to separate code segments between FPGA
+	  platform and non-FPGA platform.
+	  Say Y here if you are doing FPGA early porting.
+	  If unsure, say N
+endmenu # Misc
