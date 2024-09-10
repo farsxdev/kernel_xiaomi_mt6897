@@ -18,7 +18,8 @@
 #
 #
 
-ifeq ($(BUILD_RULE),OOT)
+MTK_PLATFORM_VERSION := $(CONFIG_MTK_PLATFORM:"%"=%)
+
     ifeq ($(MTK_PLATFORM_VERSION),mt6897)
         MTK_GPU_VERSION := $(LOCAL_MTK_GPU_VERSION)
         MTK_PLATFORM := $(MTK_PLATFORM_VERSION)
@@ -70,9 +71,7 @@ ifeq ($(BUILD_RULE),OOT)
         CONFIG_MALI_MTK_CREATE_KCPU_QUEUE_DEBUG := y
         CONFIG_MALI_MTK_CSG_ERROR_HANDLING := y
     endif ## mt6897 ##
-endif
 
-ifeq ($(BUILD_RULE),OOT)
     ifeq ($(MTK_PLATFORM_VERSION),mt6989)
         MTK_GPU_VERSION := $(LOCAL_MTK_GPU_VERSION)
         MTK_PLATFORM := $(MTK_PLATFORM_VERSION)
@@ -128,7 +127,6 @@ ifeq ($(BUILD_RULE),OOT)
         CONFIG_MALI_MTK_BLOCKED_RESOURCE_DEBUG := y
         CONFIG_MALI_MTK_CSG_ERROR_HANDLING := y
     endif ## mt6989 ##
-endif
 
 # make $(src) as absolute path if it is not already, by prefixing $(srctree)
 # This is to prevent any build issue due to wrong path.
